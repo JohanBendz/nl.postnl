@@ -120,11 +120,9 @@
 			function getUser() {
 			
 				Homey.api('get', '/user', function( err, result ){
-					
-					Homey.ready();
-					
-					if( err && err.message !== 'missing_credentials' ) return Homey.alert( err );
-					if( err && err.message === 'missing_credentials' ) {
+					if( err ) err = err.message || err;					
+					if( err && err !== 'missing_credentials' ) return Homey.alert( err );
+					if( err && err === 'missing_credentials' ) {
 						document.body.classList.remove('authorized');
 						document.body.classList.add('unauthorized');
 						return;
@@ -173,7 +171,8 @@
 				return false;
 			});
 			
-			getUser();
+			getUser();					
+			Homey.ready();
 		}
 		</script>
 	</head>

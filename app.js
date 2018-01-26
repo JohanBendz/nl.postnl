@@ -57,7 +57,7 @@ class PostNLApp extends Homey.App {
 		let username = Homey.ManagerSettings.get('username');
 		let password = Homey.ManagerSettings.get('password');
 				
-		if( !username || !password ) throw('missing_credentials');
+		if( !username || !password ) throw new Error('missing_credentials');
 		
 		return api.getToken( username, password )
 			.then( token => {
