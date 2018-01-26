@@ -1,0 +1,8 @@
+{
+	"login-title": "Login to PostNL",
+	"login": "Login",
+	"logout": "Logout",
+	"username": "E-mail address",
+	"password": "Password",
+	"invalid_credentials": "Invalid e-mail or password"
+}

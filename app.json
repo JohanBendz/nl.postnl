@@ -1,0 +1,105 @@
+{
+    "id": "nl.postnl",
+    "sdk": 2,
+    "name": {
+        "en": "PostNL"
+    },
+    "description": {
+        "en": "Track your shipments from PostNL"
+    },
+    "category": "internet",
+    "version": "1.0.0",
+    "compatibility": ">=1.5.0",
+    "author": {
+        "name": "Emile Nijssen",
+        "email": "emile@athom.nl"
+    },
+    "flow": {
+	    "triggers": [
+		    {
+			    "id": "status_1",
+			    "title": {
+					    "en": "A parcel has been collected",
+				    "nl": "Een pakket is afgegeven"
+			    },
+			    "tokens": [
+				    {
+					    "name": "barcode",
+					    "type": "string",
+					    "title": "Barcode",
+					    "example": "3SABCD123456789"
+				    },
+				    {
+					    "name": "title",
+					    "type": "string",
+					    "title": "Title",
+					    "example": "Athom Store"
+				    }
+			    ]
+		    },
+		    {
+			    "id": "status_2",
+			    "title": {
+				    "en": "A parcel has been sorted",
+				    "nl": "Een pakket is gesorteerd"
+			    },
+			    "tokens": [
+				    {
+					    "name": "barcode",
+					    "type": "string",
+					    "title": "Barcode",
+					    "example": "3SABCD123456789"
+				    },
+				    {
+					    "name": "title",
+					    "type": "string",
+					    "title": "Title",
+					    "example": "Athom Store"
+				    }
+			    ]
+		    },
+		    {
+			    "id": "status_3",
+			    "title": {
+				    "en": "A parcel is in transit",
+				    "nl": "Een pakket is onderweg"
+			    },
+			    "tokens": [
+				    {
+					    "name": "barcode",
+					    "type": "string",
+					    "title": "Barcode",
+					    "example": "3SABCD123456789"
+				    },
+				    {
+					    "name": "title",
+					    "type": "string",
+					    "title": "Title",
+					    "example": "Athom Store"
+				    }
+			    ]
+		    },
+		    {
+			    "id": "status_4",
+			    "title": {
+				    "en": "A parcel has been delivered",
+				    "nl": "Een pakket is bezorgd"
+			    },
+			    "tokens": [
+				    {
+					    "name": "barcode",
+					    "type": "string",
+					    "title": "Barcode",
+					    "example": "3SABCD123456789"
+				    },
+				    {
+					    "name": "title",
+					    "type": "string",
+					    "title": "Title",
+					    "example": "Athom Store"
+				    }
+			    ]
+		    }
+	    ]
+    }
+}

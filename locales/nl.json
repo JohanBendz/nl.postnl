@@ -1,0 +1,8 @@
+{
+	"login-title": "Inloggen bij PostNL",
+	"login": "Inloggen",
+	"logout": "Uitloggen",
+	"username": "E-mail adres",
+	"password": "Wachtwoord",
+	"invalid_credentials": "Verkeerde e-mail of wachtwoord"
+}
