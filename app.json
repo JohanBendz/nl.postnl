@@ -14,6 +14,10 @@
         "name": "Emile Nijssen",
         "email": "emile@athom.nl"
     },
+    "images": {
+	    "large": "/assets/images/large.jpg",
+	    "small": "/assets/images/small.jpg"
+    },
     "flow": {
 	    "triggers": [
 		    {
