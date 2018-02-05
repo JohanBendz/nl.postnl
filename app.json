@@ -11,8 +11,8 @@
     "version": "1.0.1",
     "compatibility": ">=1.5.0",
     "author": {
-        "name": "Emile Nijssen",
-        "email": "emile@athom.nl"
+        "name": "Athom B.V.",
+        "email": "info@athom.nl"
     },
     "images": {
 	    "large": "/assets/images/large.jpg",
