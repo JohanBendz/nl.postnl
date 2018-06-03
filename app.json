@@ -80,6 +80,18 @@
 					    "type": "string",
 					    "title": "Title",
 					    "example": "Athom Store"
+					},
+					{
+					    "name": "timeframe_from",
+					    "type": "string",
+					    "title": "From",
+					    "example": "15:40:00"
+					},
+					{
+					    "name": "timeframe_to",
+					    "type": "string",
+					    "title": "To",
+					    "example": "15:40:00"
 				    }
 			    ]
 		    },
