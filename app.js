@@ -29,7 +29,7 @@ class PostNLApp extends Homey.App {
 		return this._getAuthenticatedApi()
 			.then( api => {
 				return api.getProfile()
-			})		
+			})
 	}
 	
 	async setUser( username, password ) {
