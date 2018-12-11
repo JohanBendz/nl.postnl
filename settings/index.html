@@ -120,9 +120,11 @@
 			function getUser() {
 			
 				Homey.api('get', '/user', function( err, result ){
-					if( err ) err = err.message || err;					
-					if( err && err !== 'missing_credentials' ) return Homey.alert( err );
-					if( err && err === 'missing_credentials' ) {
+					if( err ) err = err.message || err;	
+					const missingCredentials = err && err.includes('missing_credentials');
+									
+					if( err && !missingCredentials ) return Homey.alert( err );
+					if( err && missingCredentials ) {
 						document.body.classList.remove('authorized');
 						document.body.classList.add('unauthorized');
 						return;
@@ -131,7 +133,8 @@
 					document.body.classList.remove('unauthorized');
 					document.body.classList.add('authorized');
 					
-					nameEl.textContent = result.personalData.firstName + ' ' + result.personalData.lastName;
+					const middleName = result.personalData.middleName ? ` ${result.personalData.middleName } ` : ' ';
+					nameEl.textContent = result.personalData.firstName + middleName + result.personalData.lastName;
 					avatarEl.style.backgroundImage = result.picture ? 'url(' + result.picture + ')' : '';
 					addressEl.textContent = result.personalData.street
 					 + ' ' + result.personalData.houseNumber
@@ -163,7 +166,9 @@
 					username: username,
 					password: password,
 				}, function( err, result ) {
-					if( err && err.message === 'invalid_credentials' ) return errorEl.textContent = __('invalid_credentials')
+					const invalidCredentials = err && err.includes('invalid_credentials');
+
+					if( err && invalidCredentials ) return errorEl.textContent = __('invalid_credentials')
 					if( err ) return Homey.alert( err );
 					getUser();										
 				})
@@ -188,7 +193,7 @@
 		<form id="form" action="/" method="post">
 			<div class="avatar"></div>
 			<h2 class="title" data-i18n="login-title"></h2>
-			<input id="username" name="username" type="text" value="" data-i18n-placeholder="username" class="postnl-text" />
+			<input id="username" name="username" type="email" value="" data-i18n-placeholder="username" class="postnl-text" />
 			<input id="password" name="password" type="password" value="" data-i18n-placeholder="password" class="postnl-text" />
 			<input id="submit" type="submit" data-i18n-value="login" class="postnl-button" />
 			<p id="error"></p>
