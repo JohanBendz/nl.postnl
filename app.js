@@ -74,12 +74,19 @@ class PostNLApp extends Homey.App {
 				this.log(`Found ${inbox.receiver.length} shipments`);
 				
 				inbox.receiver.forEach(shipment => {
+					//console.log(shipment);
 					let key = shipment.key;
 					let barcode = shipment.trackedShipment.barcode
 					let senderTitle = ( shipment.sender && shipment.sender.companyName ) || ''
 					let statusTitle = shipment.delivery.status
 					let statusIndex = shipment.delivery.phase.index
 					let title = shipment.trackedShipment.title || senderTitle || barcode
+					let timeframe = shipment.delivery.timeframe
+					
+					var arr_from = timeframe.from.split("T");
+					var time_from = arr_from[1].split("+");
+					var arr_to = timeframe.to.split("T");
+					var time_to = arr_to[1].split("+");
 					
 					let settingKey = `shipment_${key}`;
 					let shouldSave = false;
@@ -99,7 +106,9 @@ class PostNLApp extends Homey.App {
 						Homey.ManagerSettings.set(settingKey, {
 							barcode: barcode,
 							statusIndex: statusIndex,
-							lastUpdated: new Date()
+							lastUpdated: new Date(),
+							timeframe_from: time_from[0],
+							timeframe_to: time_to[0],
 						})
 					}
 					
