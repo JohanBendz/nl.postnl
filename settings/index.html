@@ -97,6 +97,7 @@
 			height: 40px;
 			font-size: 16px;
 			transition: all 0.3s;	
+			-webkit-appearance: none;
 		}
 		.postnl-button:hover {
 			cursor: pointer;
@@ -162,13 +163,18 @@
 				var username = usernameEl.value;
 				var password = passwordEl.value;
 				
+				errorEl.textContent = '';
+				
 				Homey.api('put', '/user', {
 					username: username,
 					password: password,
 				}, function( err, result ) {
+					if( err ) err = err.message || err;	
 					const invalidCredentials = err && err.includes('invalid_credentials');
 
-					if( err && invalidCredentials ) return errorEl.textContent = __('invalid_credentials')
+					if( err && invalidCredentials )
+					  return errorEl.textContent = Homey.__('invalid_credentials')
+					  
 					if( err ) return Homey.alert( err );
 					getUser();										
 				})
