@@ -24,7 +24,7 @@
 		    {
 			    "id": "status_1",
 			    "title": {
-					"en": "A parcel has been collected",
+				    "en": "A parcel has been collected",
 				    "nl": "Een pakket is afgegeven"
 			    },
 			    "tokens": [
